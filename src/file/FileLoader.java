@@ -9,15 +9,16 @@ import java.nio.file.Path;
 import java.util.List;
 
 public class FileLoader {
-
-	public static List<String> loadOrdbok() {
 	
+	/*
+	 * Load ordbok.txt using easiest method available in Files with a static path.
+	 * May be insufficient for larger file sizes.
+	 * Using ISO-8859-1 charset to import special characters æ, ø, and å.
+	 */
+	public static List<String> loadOrdbok() {
 		try {
 			Path path = FileSystems.getDefault().getPath("data", "ordbok.txt");
 			List<String> words = Files.readAllLines(path, Charset.forName("ISO-8859-1"));
-			for (String line : words) {
-				System.out.println(line);
-			}
 			return words;
 		} catch (IOException e) {
 			e.printStackTrace();
